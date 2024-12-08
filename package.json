@@ -1,0 +1,27 @@
+{
+  "name": "bot-wa",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@types/node": "^22.7.4",
+    "@whiskeysockets/baileys": "^6.7.8",
+    "libsignal": "^2.0.1",
+    "node-fetch": "^3.3.2",
+    "open": "^10.1.0",
+    "performance-now": "^2.1.0",
+    "protobufjs": "^7.4.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "trustedDependencies": [
+    "protobufjs"
+  ],
+  "scripts": {
+    "dev": "bun x tsc && node dist/index.js"
+  }
+}
