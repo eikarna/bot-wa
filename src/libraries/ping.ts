@@ -1,5 +1,5 @@
 import os from 'os';
-import { performance } from 'perf_hooks';
+import {performance} from 'perf_hooks';
 import speed from 'performance-now';
 import fetch from 'node-fetch';
 
@@ -14,6 +14,7 @@ function format(seconds: number) {
     function pad(s: number) {
         return (s < 10 ? "0" : "") + s;
     }
+
     var hours = Math.floor(seconds / (60 * 60));
     var minutes = Math.floor((seconds % (60 * 60)) / 60);
     var seconds = Math.floor(seconds % 60);
@@ -21,7 +22,7 @@ function format(seconds: number) {
     return pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
 }
 
-export default async function() {
+export default async function () {
     let listcpus = os.cpus();
     let totalmem = bytesToSize(os.totalmem());
     let freemem = bytesToSize(os.freemem());

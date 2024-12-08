@@ -11,8 +11,10 @@
   "dependencies": {
     "@types/node": "^22.7.4",
     "@whiskeysockets/baileys": "^6.7.8",
+    "easy-threads-workers": "^4.0.0",
     "libsignal": "^2.0.1",
     "node-fetch": "^3.3.2",
+    "noroutine": "^0.0.7",
     "open": "^10.1.0",
     "performance-now": "^2.1.0",
     "protobufjs": "^7.4.0",

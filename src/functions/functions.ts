@@ -1,10 +1,11 @@
 import wa from '@whiskeysockets/baileys';
-const { delay, makeCacheableSignalKeyStore, proto } = wa;
-import { makeWASocket, AnyMessageContent, WAMessageContent, WAMessageKey } from '@whiskeysockets/baileys'
+
+const {makeCacheableSignalKeyStore, proto} = wa;
+import {makeWASocket, AnyMessageContent, WAMessageContent, WAMessageKey} from '@whiskeysockets/baileys'
 import NodeCache from "node-cache";
 
 // @ts-ignore
-const waSocket = function(version: makeWASocket.WAVersion, logger: logger, usePairingCode: boolean, state: makeWASocket.AuthenticationState, msgRetryCounterCache: NodeCache, store: any) {
+const waSocket = function (version: makeWASocket.WAVersion, logger: logger, usePairingCode: boolean, state: makeWASocket.AuthenticationState, msgRetryCounterCache: NodeCache, store: any) {
     // @ts-ignore
     return makeWASocket({
         version,
@@ -35,8 +36,8 @@ const createGetMessageFunction = (store?: any) => {
     }
 }
 
-const getMessage = async(store: any, key: WAMessageKey): Promise<WAMessageContent | undefined> => {
-    if(store) {
+const getMessage = async (store: any, key: WAMessageKey): Promise<WAMessageContent | undefined> => {
+    if (store) {
         const msg = await store.loadMessage(key.remoteJid!, key.id!)
         return msg?.message || undefined
     }
@@ -45,17 +46,20 @@ const getMessage = async(store: any, key: WAMessageKey): Promise<WAMessageConten
     return proto.Message.fromObject({})
 }
 
-const sendMessageWTyping = async(sock: any, msg: AnyMessageContent, jid: string) => {
-    await sock.presenceSubscribe(jid)
+const sendMessageWTyping = async (sock: any, msg: AnyMessageContent, jid: string) => {
+    /*await sock.presenceSubscribe(jid)
     await delay(500)
 
     await sock.sendPresenceUpdate('composing', jid)
     await delay(2000)
 
-    await sock.sendPresenceUpdate('paused', jid)
+    await sock.sendPresenceUpdate('paused', jid)*/
 
     await sock.sendMessage(jid, msg)
 }
 
 export {
-    sendMessageWTyping, getMessage, waSocket }
+    sendMessageWTyping,
+    getMessage,
+    waSocket
+}
